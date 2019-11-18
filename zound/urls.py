@@ -14,24 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from rest_framework import routers
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 
-# from cedictionary import urls as cedictionaryurls
-# from connections import urls as connectionsurls
-from .patches import routers
-from cedictionary.urls import router as cedictionary_router
-from connections.urls import router as connections_router
 
-router = routers.DefaultRouter()
-router.extend(connections_router)
-router.extend(cedictionary_router)
-# router.extend(cedictionary_router)
+router = DefaultRouter()
 
 urlpatterns = [
-    path(r'api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path(r'', include(router.urls))
+    path('admin/', admin.site.urls),
+    path(r'', include('connections.urls'))
 ]
 # routeLists = [
 #     cedictionaryurls.routeList,

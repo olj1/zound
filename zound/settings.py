@@ -14,6 +14,9 @@ import os
 import django_heroku
 import rest_framework
 
+
+
+
 # from custom_user.models import CustomUser
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -94,14 +97,6 @@ DATABASES = {
         'HOST': '',
         'PORT': '',
     },
-    'cedictpostgres': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cedictpostgres',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
-    },
 }
 
 # Password validation
@@ -148,9 +143,6 @@ REST_FRAMEWORK = {
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
-
-DATABASE_ROUTERS = ['zound.database_routers.CedictionaryRouter.CedictRouter']
 
 # 'zound.database_routers.ConnectionsRouter.ConnectionsRouter'
 # 'zound.database_routers.CedictionaryRouter.CedictRouter'
