@@ -9,6 +9,7 @@ from django.db import models
 
 
 class Entries(models.Model):
+    id = models.IntegerField(primary_key=True, serialize=True)
     traditional = models.TextField(blank=True, null=True)
     simplified = models.TextField(blank=True, null=True)
     pinyin = models.TextField(blank=True, null=True)

@@ -13,9 +13,33 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+from rest_framework import routers
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+# from cedictionary import urls as cedictionaryurls
+# from connections import urls as connectionsurls
+from .patches import routers
+from cedictionary.urls import router as cedictionary_router
+from connections.urls import router as connections_router
+
+router = routers.DefaultRouter()
+router.extend(connections_router)
+router.extend(cedictionary_router)
+# router.extend(cedictionary_router)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path(r'api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path(r'', include(router.urls))
 ]
+# routeLists = [
+#     cedictionaryurls.routeList,
+#     connectionsurls.routeList,
+# ]
+
+# router = routers.DefaultRouter()
+# for routeList in routeLists:
+#     for route in routeList:
+#         router.register(route[0], route[1])
+

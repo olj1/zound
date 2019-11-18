@@ -1,4 +1,4 @@
-class ConnectionsRouter:
+class ConnectionsRouter(object):
     """
     A router to control all database operations on models in the
     connections application.
@@ -8,7 +8,7 @@ class ConnectionsRouter:
         Attempts to read connections models go to connectionspostgres.
         """
         if model._meta.app_label == 'connections':
-            return 'connectionspostgres'
+            return 'default'
         return None
 
     def db_for_write(self, model, **hints):
@@ -16,7 +16,7 @@ class ConnectionsRouter:
         Attempts to write connections models go to connectionspostgres.
         """
         if model._meta.app_label == 'connections':
-            return 'connectionspostgres'
+            return 'default'
         return None
 
     def allow_relation(self, obj1, obj2, **hints):
@@ -35,4 +35,4 @@ class ConnectionsRouter:
         """
         if app_label == 'connections':
             return db == 'connectionspostgres'
-        return None
+        return True

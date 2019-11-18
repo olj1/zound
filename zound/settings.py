@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
+import django_heroku
+import rest_framework
 
 # from custom_user.models import CustomUser
 
@@ -45,6 +46,8 @@ INSTALLED_APPS = [
     'connections',
     'cedictionary',
     'rest_framework',
+    'drf_multiple_model',
+    'django_extensions',
     
 ]
 
@@ -83,15 +86,22 @@ WSGI_APPLICATION = 'zound.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {},
-    'connectionspostgres': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'connectionspostgres',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     },
     'cedictpostgres': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'cedictpostgres',
-    }
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+    },
 }
 
 # Password validation
@@ -126,6 +136,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
@@ -133,5 +150,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-DATABASE_ROUTERS = ['zound.database_routers.ConnectionsRouter.ConnectionsRouter', 'zound.database_routers.CedictionaryRouter.CedictRouter']
+DATABASE_ROUTERS = ['zound.database_routers.CedictionaryRouter.CedictRouter']
 
+# 'zound.database_routers.ConnectionsRouter.ConnectionsRouter'
+# 'zound.database_routers.CedictionaryRouter.CedictRouter'
+
+django_heroku.settings(locals())
