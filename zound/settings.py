@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     
     
     'connections',
-    'cedictionary',
     'rest_framework',
     'drf_multiple_model',
     'django_extensions',
