@@ -10,7 +10,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 class LanguageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Language
-        fields = ('english_name', 'iso_639_1_code', 'iso_639_2_code')
+        fields = ('english_name', 'iso_639_1_code', 'iso_639_2_code', 'iso_693_3_type', 'iso_693_3_code')
 
 
 class WordSerializer(serializers.ModelSerializer):
