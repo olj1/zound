@@ -19,8 +19,10 @@ def save_user_profile(sender, instance, **kwargs):
 
 class Language(models.Model):
     english_name = models.CharField(max_length=100)
-    iso_639_1_code = models.CharField(max_length=7)
-    iso_639_2_code = models.CharField(max_length=7)
+    iso_639_1_code = models.CharField(max_length=7, null=True)
+    iso_639_2_code = models.CharField(max_length=7, null=True)
+    iso_693_3_type = models.CharField(max_length=20, null=True)
+    iso_693_3_code = models.CharField(max_length=7, null=True) 
 
 class Word(models.Model):
     language = models.ForeignKey(Language, on_delete=models.CASCADE, related_name='words')

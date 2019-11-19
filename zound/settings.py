@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     
     'connections',
     'rest_framework',
-    'drf_multiple_model',
     'django_extensions',
     
 ]
@@ -142,8 +141,5 @@ REST_FRAMEWORK = {
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
-# 'zound.database_routers.ConnectionsRouter.ConnectionsRouter'
-# 'zound.database_routers.CedictionaryRouter.CedictRouter'
 
 django_heroku.settings(locals())

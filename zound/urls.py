@@ -25,13 +25,3 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'', include('connections.urls'))
 ]
-# routeLists = [
-#     cedictionaryurls.routeList,
-#     connectionsurls.routeList,
-# ]
-
-# router = routers.DefaultRouter()
-# for routeList in routeLists:
-#     for route in routeList:
-#         router.register(route[0], route[1])
-

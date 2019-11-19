@@ -1,4 +1,3 @@
-import itertools
 from django.shortcuts import render
 
 from .models import Profile, Language, Word, Connection
@@ -22,4 +21,3 @@ class WordViewSet(viewsets.ModelViewSet):
 class ConnectionViewSet(viewsets.ModelViewSet):
     queryset = Connection.objects.all()
     serializer_class = ConnectionSerializer
-

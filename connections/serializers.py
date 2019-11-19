@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from drf_multiple_model.views import ObjectMultipleModelAPIView
 from .models import Connection, Word, Language, Profile
 
 
