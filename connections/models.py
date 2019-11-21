@@ -23,6 +23,8 @@ class Language(models.Model):
     iso_639_2_code = models.CharField(max_length=7, null=True)
     iso_693_3_type = models.CharField(max_length=20, null=True)
     iso_693_3_code = models.CharField(max_length=7, null=True) 
+    def __str__(self):
+        return f"{self.english_name}"
 
 class Word(models.Model):
     language = models.ForeignKey(Language, on_delete=models.CASCADE, related_name='words')
